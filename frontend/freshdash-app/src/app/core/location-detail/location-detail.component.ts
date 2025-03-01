@@ -10,7 +10,8 @@ import {FormsModule} from "@angular/forms";
   standalone: true,
   imports: [
     NgForOf,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   styleUrls: ['./location-detail.component.css']
 })
@@ -19,6 +20,8 @@ export class LocationDetailComponent implements OnInit {
   router: Router = inject(Router);
   location: string = '';
   recipes: any[] = [];
+  feedbackMessage: string = '';
+
 
   constructor(private route: ActivatedRoute) {}
 
@@ -32,6 +35,11 @@ export class LocationDetailComponent implements OnInit {
   getRecipes() {
     this.recipeService.getRecipes(this.location).subscribe((data: any) => {
       this.recipes = data;
+      if (this.recipes.length === 0) {
+        this.feedbackMessage = 'No recipes found for the entered location.';
+      } else {
+        this.feedbackMessage = '';
+      }
     });
   }
 
