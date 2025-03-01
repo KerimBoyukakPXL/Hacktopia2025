@@ -5,14 +5,13 @@ import {RecipeService} from "../../services/recipe.service";
 import {FormsModule} from "@angular/forms";
 
 @Component({
-  selector: 'app-location-detail',
-  templateUrl: './location-detail.component.html',
-  standalone: true,
-  imports: [
-    NgForOf,
-    FormsModule
-  ],
-  styleUrls: ['./location-detail.component.css']
+    selector: 'app-location-detail',
+    templateUrl: './location-detail.component.html',
+    imports: [
+        NgForOf,
+        FormsModule
+    ],
+    styleUrls: ['./location-detail.component.css']
 })
 export class LocationDetailComponent implements OnInit {
   recipeService: RecipeService = inject(RecipeService);
