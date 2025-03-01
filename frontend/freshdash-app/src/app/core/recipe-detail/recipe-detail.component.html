@@ -1,10 +1,27 @@
 <div class="container mx-auto p-4">
-  <div class="card p-4 bg-stone-100 shadow rounded-2xl">
-    <h2 class="text-2xl font-semibold mb-2">{{ recipe.Recipe }}</h2>
-    <p><strong>Ingredients:</strong> {{ recipe.Ingredients }}</p>
-    <p><strong>Gluten Free:</strong> {{ recipe.GlutenFree }}</p>
-    <p><strong>High Protein:</strong> {{ recipe['High Protein'] }}</p>
-    <p><strong>Keto:</strong> {{ recipe.Keto }}</p>
-    <p><strong>Spicy:</strong> {{ recipe.Spicy }}</p>
+  <div class="flex justify-center mb-6">
+    <div class="w-1/2">
+      <h1 class="text-4xl mb-4">Gezonde voeding uit je eigen tuin met Fresh<span class="font-bold">Dash.</span></h1>
+      <div class="flex items-center bg-stone-100 rounded-2xl p-2 mb-6">
+        <input disabled type="text" class="w-full bg-stone-100 text-center border-none outline-none rounded-2xl" [(ngModel)]="location">
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col md:flex-row justify-center gap-4">
+    <div class="w-full md:w-1/3 p-4">
+      <div class="card bg-stone-100 shadow rounded-2xl h-64 flex items-center justify-center">
+        <!-- Empty card for the image -->
+      </div>
+    </div>
+    <div class=" p-4">
+      <h2 class="text-2xl font-semibold mb-4">{{ recipe.Recipe }}</h2>
+      <p class="mb-2"><strong>Ingredients:</strong></p>
+      <ul class="list-disc list-inside mb-6">
+        <li *ngFor="let ingredient of recipe.Ingredients.split(';')">{{ ingredient.trim() }}</li>
+      </ul>
+      <button class="bg-stone-100 text-stone-800 font-bold py-4 px-4 rounded-lg hover:bg-stone-200 transition-colors w-full md:w-auto">
+        Abonneer op FreshDash
+      </button>
+    </div>
   </div>
 </div>

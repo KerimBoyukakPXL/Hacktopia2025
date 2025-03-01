@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
-import { NgForOf } from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -10,7 +10,8 @@ import {FormsModule} from "@angular/forms";
   standalone: true,
   imports: [
     NgForOf,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   styleUrls: ['./location-detail.component.css']
 })
@@ -36,6 +37,6 @@ export class LocationDetailComponent implements OnInit {
   }
 
   navigateToRecipe(recipe: any) {
-    this.router.navigate(['/recipe-detail'], { queryParams: { recipe: JSON.stringify(recipe) } });
+    this.router.navigate(['/recipe-detail'], { queryParams: { recipe: JSON.stringify(recipe), location: this.location } });
   }
 }
