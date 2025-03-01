@@ -7,7 +7,7 @@ It is a website that can look up locations and based on that gives you recipes t
 
 The theme was "Build your own planet" so we made it a little alien themed and as subtheme we chose "Food"
 
-# practival
+# practical
 use the following command to get the frontend running
 `ng serve`
 
