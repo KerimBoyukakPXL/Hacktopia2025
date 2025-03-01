@@ -5,6 +5,14 @@ import pandas as pd
 
 app = Flask(__name__)
 
+# Disable CORS by adding headers to all responses.
+@app.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
+    response.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
+    return response
+
 @app.route('/date', methods=['GET'])
 def get_date():
     now = datetime.datetime.now()
@@ -27,7 +35,6 @@ def get_recipes():
         return jsonify(recipes)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/plants', methods=['POST'])
 def get_plants():
@@ -86,4 +93,4 @@ def get_plant_info():
         return jsonify({"error": str(e)}), 500
     
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
