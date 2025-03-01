@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RecipeService } from '../../services/recipe.service';
 import { NgForOf } from '@angular/common';
-import {RecipeService} from "../../services/recipe.service";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
 })
 export class LocationDetailComponent implements OnInit {
   recipeService: RecipeService = inject(RecipeService);
+  router: Router = inject(Router);
   location: string = '';
   recipes: any[] = [];
 
@@ -29,8 +30,12 @@ export class LocationDetailComponent implements OnInit {
   }
 
   getRecipes() {
-    this.recipeService.getRecipes(this.location).subscribe((data: any) => {
-      this.recipes = data;
+    this.recipeService.getRecipes(this.location).subscribe((recipes: any[]) => {
+      this.recipes = recipes;
     });
+  }
+
+  navigateToRecipe(recipe: any) {
+    this.router.navigate(['/recipe-detail'], { queryParams: { recipe: JSON.stringify(recipe) } });
   }
 }
