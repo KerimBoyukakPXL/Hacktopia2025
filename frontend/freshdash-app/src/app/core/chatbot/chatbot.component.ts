@@ -36,7 +36,7 @@ import { CommonModule } from '@angular/common';
       <!-- iFrame om je Streamlit-app te tonen -->
       <iframe
         class="flex-1 w-full border-0"
-        src="https://placeholder-url-naar-backend"
+        src="http://18.234.131.104:8501/"
         title="Chatbot"
       ></iframe>
     </div>
