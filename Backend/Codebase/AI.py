@@ -23,7 +23,7 @@ def load_data_locally():
             headers = content.get("headers", [])
             paragraphs = content.get("paragraphs", [])
             for text in headers + paragraphs:
-                if isinstance(text, str):  # Ensure the text is a string
+                if isinstance(text, str):  
                     combined.append({"text": text, "url": url})
     elif isinstance(data, list):
         combined = [{"text": item, "url": "Unknown"} for item in data if isinstance(item, str)]
@@ -69,8 +69,7 @@ def call_llama_via_ollama(user_query, context_list):
     json_payload = {
         "model": "llama2:latest",
         "prompt": f"""
-You are a volunteer for the Red Cross Netherlands. Answer factually, professionally, and concisely (max 3 sentences).
-Never invent information and only use the provided context.
+You are a bot that answers questions based on the context provided.
 
 📌 **Context**:
 {context_block}
@@ -97,25 +96,25 @@ Never invent information and only use the provided context.
         return f"Error calling Llama: {str(e)}"
 
 def main():
-    st.title("🤖 HIA - Bot (HackTuah!)🔗")
-
+    st.title("👽 Zorblax - Galactic Q&A Hub")
+    
     clean_data, index = load_data_locally()
-
-    user_query = st.text_input("❓")
-    if st.button("🔍"):
+    
+    user_query = st.text_input("👾 Qeyz?")
+    if st.button("🛸 Beam Me Up"):
         context_matches = fast_search(user_query, index)
-
+    
         answer = call_llama_via_ollama(user_query, context_matches)
-
-        st.write("**✅**")
+    
+        st.write("**🚀 Galactic Answer:**")
         st.write(answer)
-
-        st.write("**🔗**")
+    
+        st.write("**🌌 Source Sectors:**")
         displayed_urls = set()
         for match in context_matches:
             if match['url'] not in displayed_urls:
                 st.write(f"- {match['url']}")
                 displayed_urls.add(match['url'])
-
+    
 if __name__ == "__main__":
     main()
