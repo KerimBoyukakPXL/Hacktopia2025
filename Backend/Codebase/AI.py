@@ -4,7 +4,7 @@ import json
 from collections import defaultdict
 
 LOCAL_JSON_FILE = "data.json"
-OLLAMA_ENDPOINT = "http://127.0.0.1:11434"
+OLLAMA_ENDPOINT = "http://127.0.0.1:11433"
 
 def load_data_locally():
     """
@@ -109,12 +109,6 @@ def main():
         st.write("**🚀 Galactic Answer:**")
         st.write(answer)
     
-        st.write("**🌌 Source Sectors:**")
-        displayed_urls = set()
-        for match in context_matches:
-            if match['url'] not in displayed_urls:
-                st.write(f"- {match['url']}")
-                displayed_urls.add(match['url'])
     
 if __name__ == "__main__":
     main()
