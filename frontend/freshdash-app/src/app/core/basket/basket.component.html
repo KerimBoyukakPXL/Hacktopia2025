@@ -1,0 +1,17 @@
+<!-- freshdash-app/src/app/core/basket/basket.component.html -->
+<div class="container mx-auto p-4">
+  <h1 class="text-4xl mb-4">Your Basket</h1>
+  <button class="bg-red-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-900 transition-colors mb-4" (click)="clearBasket()">
+    Clear Basket
+  </button>
+  <button class="bg-green-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-800 transition-colors mb-4 ml-4" (click)="checkout()">
+    Checkout
+  </button>
+  <div *ngIf="successMessage" class="text-green-700 font-bold mb-4">
+    {{ successMessage }}
+  </div>
+  <div *ngFor="let item of basket" class="card p-4 bg-stone-100 shadow rounded-2xl mb-4">
+    <h2 class="text-2xl font-semibold mb-2">{{ item.Recipe }}</h2>
+    <p><strong>Ingredients:</strong> {{ item.Ingredients }}</p>
+  </div>
+</div>

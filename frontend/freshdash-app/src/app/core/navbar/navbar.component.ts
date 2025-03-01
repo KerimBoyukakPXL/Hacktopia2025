@@ -12,4 +12,8 @@ export class NavbarComponent {
   navigateToHome() {
     this.router.navigate(['/']);
     }
+  navigateToBasket() {
+    this.router.navigate(['/basket']);
+    }
   }
+

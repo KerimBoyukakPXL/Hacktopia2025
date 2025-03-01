@@ -1,0 +1,10 @@
+.ingredient-list-container {
+  max-height: 200px; /* Adjust the height as needed */
+  overflow-y: auto;
+  padding-right: 1rem; /* Optional: Add padding to avoid scrollbar overlap */
+}
+
+.ingredient-list {
+  list-style-type: none;
+  padding: 0;
+}

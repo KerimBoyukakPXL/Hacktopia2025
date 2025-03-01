@@ -10,8 +10,7 @@ import {FormsModule} from "@angular/forms";
   standalone: true,
   imports: [
     NgForOf,
-    FormsModule,
-    NgIf
+    FormsModule
   ],
   styleUrls: ['./location-detail.component.css']
 })
