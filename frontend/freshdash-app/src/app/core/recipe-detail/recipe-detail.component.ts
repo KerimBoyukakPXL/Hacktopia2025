@@ -8,7 +8,6 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './recipe-detail.component.html',
   standalone: true,
   imports: [
-    NgIf,
     FormsModule,
     NgForOf
   ],
