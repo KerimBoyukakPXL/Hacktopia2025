@@ -31,8 +31,8 @@ export class LocationDetailComponent implements OnInit {
   }
 
   getRecipes() {
-    this.recipeService.getRecipes(this.location).subscribe((recipes: any[]) => {
-      this.recipes = recipes;
+    this.recipeService.getRecipes(this.location).subscribe((data: any) => {
+      this.recipes = data;
     });
   }
 
